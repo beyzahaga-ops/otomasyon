@@ -10,8 +10,10 @@ class CartPage{
         cy.get('#go-cart-btn').click();
     }
 
-    goToCartFromPopUp(){
-        cy.get('#cart-popup-go-cart').click();
+    goToCartFromPopup() {
+        cy.get('#cart-popup-go-cart')
+        .should('be.visible')
+        .click();
     }
 
     verifyCartIsEmpty(){

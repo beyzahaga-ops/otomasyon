@@ -4,24 +4,24 @@ class HomePage{
         cy.visit('https://www.kitapsepeti.com/')
     }
 
-    scrollToFirstProduct(){
-         cy.get('.swiper-slide.product-item.effect-wrapper')
-        .first()
+    scrollToFirstProduct() {
+        cy.get('.swiper-slide.product-item.effect-wrapper')
+        .eq(0)
         .scrollIntoView({ duration: 250 });
     }
     
 
-    hoverOnFirstProduct(){
+    hoverOnFirstProduct() {
         cy.get('.swiper-slide.product-item.effect-wrapper')
-        .first()
-        .trigger('mouseover', { force: true });
+        .eq(0)
+        .trigger('mouseover');
     }
 
-    clickAddToCartButton(){
-      cy.get('.add-to-cart-btn')
-      .first()
-      .should('exist')
-      .click({ force: true });
+    clickAddToCartButton() {
+        cy.get('.swiper-slide.product-item.effect-wrapper')
+        .eq(0)
+        .find('.add-to-cart-btn')
+        .click({ force:true });
     }
 
     acceptCookies(){

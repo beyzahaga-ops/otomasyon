@@ -1,3 +1,4 @@
+import CartPage from "../../pages/CartPage";
 import  HomePage  from "../../pages/HomePage";
 import Login from "../../pages/Login";
 
@@ -14,7 +15,6 @@ describe('Sepete Erisim', () => {
         HomePage.scrollToFirstProduct();
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
-
-        
+        CartPage.goToCartFromPopup();       
     });
 });
