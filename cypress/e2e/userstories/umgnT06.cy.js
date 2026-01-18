@@ -13,6 +13,7 @@ describe('Urun Miktari Guncelleme Negatif', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.enterInvalidCartItemQuantity();
         CartPage.clickOutsideCartArea();
 

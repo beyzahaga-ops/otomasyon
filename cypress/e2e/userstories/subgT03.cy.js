@@ -11,7 +11,6 @@ describe('Sepetteki Urun Bilgilerinin Goruntulenmesi', () => {
 
         CartPage.openCartPageFromMiniCart();
         CartPage.verifyProductDetails();
-
-        cy.location('pathname').should('include', 'sepet');
+        CartPage.verifyUserOnCartPage();
     });
 });

@@ -11,8 +11,11 @@ describe('Giris Yapilmamissa Odeme Adimina Geciste Yonlendirme Negatif', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.clickBuyNowFromCart();
+        CartPage.verifyOrderLoginPage();
         CartPage.continueAsGuest();
+        CartPage.verifyOrderAddressPage();
         CartPage.saveShippingAddress();
         
     });

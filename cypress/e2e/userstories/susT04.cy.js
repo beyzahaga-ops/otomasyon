@@ -10,6 +10,7 @@ describe('Sepetten Urun Silme', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.removeProductFromCart();
         CartPage.verifyCartIsEmptyAfterRemove();
     });

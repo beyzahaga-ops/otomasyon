@@ -12,7 +12,8 @@ describe('Toplam Fiyat Ve Kargo Bilgisi', () => {
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
 
-        CartPage.openCartPageFromHeader();
+        CartPage.goToCartFromPopup();
+        CartPage.verifyUserOnCartPage();
         CartPage.verifyCartTotalsDisplayed();
         
     });

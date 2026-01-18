@@ -15,6 +15,8 @@ describe('Sepete Erisim', () => {
         HomePage.scrollToFirstProduct();
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
-        CartPage.goToCartFromPopup();       
+        CartPage.goToCartFromPopup();
+        CartPage.verifyCartPageOpened();
+        CartPage.verifyUserOnCartPage();    
     });
 });

@@ -11,8 +11,11 @@ describe('Uye Olmadan Devam Etme Akisi', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.clickBuyNowFromCart();
+        CartPage.verifyOrderLoginPage();
         CartPage.continueAsGuest();
+        CartPage.verifyOrderAddressPage();
 
    });
 })

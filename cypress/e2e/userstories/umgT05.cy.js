@@ -12,11 +12,9 @@ describe('Urun Miktari Guncelleme', () => {
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
 
-        CartPage.openCartPageFromHeader();
+        CartPage.goToCartFromPopup();
+        CartPage.verifyUserOnCartPage();
         CartPage.increaseCartItemQuantity();
         CartPage.decreaseCartItemQuantity();
-        cy.location('pathname').should('include', 'sepet');
-
-        
     });
 });

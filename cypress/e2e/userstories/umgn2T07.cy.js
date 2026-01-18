@@ -12,9 +12,9 @@ describe('Urun Miktari Guncelleme Negatif Iki', () => {
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
 
-        CartPage.goToCartFromPopUp();
+        CartPage.goToCartFromPopup();
+        CartPage.verifyUserOnCartPage();
         CartPage.enterZeroCartItemQuantity();
         CartPage.clickOutsideCartArea();
-
     });
 });

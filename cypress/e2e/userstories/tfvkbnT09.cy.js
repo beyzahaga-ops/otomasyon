@@ -13,7 +13,8 @@ describe('Toplam Fiyat Ve Kargo Bilgisi Negatif', () => {
         HomePage.hoverOnFirstProduct();
         HomePage.clickAddToCartButton();
 
-        CartPage.openCartPageFromHeader();
+        CartPage.goToCartFromPopup();
+        CartPage.verifyUserOnCartPage();
         CartPage.enterValidCartItemQuantity();
         CartPage.clickOutsideCartArea();
         CartPage.verifyCartTotalsDisplayed();

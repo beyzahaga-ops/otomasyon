@@ -11,11 +11,13 @@ describe('Uye Olmadan Devam Etme Akisi Negatif', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.clickBuyNowFromCart();
-        cy.location('pathname').should('include', 'siparis-uye-giris');
+        CartPage.verifyOrderLoginPage();
         CartPage.continueAsGuest();
-        cy.location('pathname').should('include', 'order/address');
+        CartPage.verifyOrderAddressPage();
         CartPage.fillShippingAddress();
+        CartPage.verifyOrderPaymentPage();
         
     });
 });

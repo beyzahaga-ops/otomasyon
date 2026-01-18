@@ -1,100 +1,167 @@
 class CartPage{
 
+    goToCartButton = '#cart-popup-go-cart';
+    
+    openCartPageFromHeaderButton = '#header-cart-btn > .d-none';
+    openCartFromPopUp = '#go-cart-btn';
+
+    emptyCartMessage = '.fw-light';
+
+    cartItemTitle = '.cart-item-title';
+    cartItemPrice = '.fw-medium';
+    cartItemTotalPrice = '.col-md > .fw-bold';
+    cartItemImage = '.image-inner > .border-round';
+
+    removeItemButton = '#delete-product-5489650 > .ti-trash-o';
+    confirmRemoveButton = '.t-popconfirm-buttons > .btn-light';
+
+    increaseQuantityButton = '#qty-plus5489650';
+    decreaseQuantityButton = '#qty-minus5489650';
+
+    quantityInput = '#qty5489650';
+    
+    cartPageButtonArea = '.cart-page-buttons';
+    
+    cartTotalsContainer = '#cart-price-container > .p-2';
+
+    buyNowButton = '#cart-buy-btn > .fw-bold';
+    
+    continueAsGuestButton = '#membership-form-131 > .w-100';
+
+    shippingForm = '#order-address-form';
+    companyCheckbox = '[name="is_company_active"]';
+
+    emailInput = '[name="email"]';
+    fullNameInput = '[name="fullname"]';
+    countrySelect = '[name="country_code"]';
+    citySelect = '[name="city_code"]';
+    townSelect = '[name="town_code"]';
+    districtSelect = '[name="district_code"]';
+    addressTextarea = '[name="address"]';
+    phoneInput = '[name="mobile_phone"]';
+
+    saveAddressButton = '.col-12 > .btn';
+    saveAddressSpan = '.col-12 > .btn > span';
+
+    miniCartGoToCartButton = '#cart-popup-go-cart';
+
+    
     navigateUrl(){
         cy.visit('https://www.kitapsepeti.com/')
     }
     
 
     openCartPageFromHeader(){
-        cy.get('#header-cart-btn > .d-none').scrollIntoView().click({ force: true });
-        cy.get('#go-cart-btn').click();
+        cy.get(this.openCartPageFromHeaderButton).scrollIntoView().click({ force: true });
+        cy.get(this.openCartFromPopUp).click();
     }
 
     goToCartFromPopup() {
-        cy.get('#cart-popup-go-cart')
+        cy.get(this.goToCartButton)
         .should('be.visible')
         .click();
     }
 
+    verifyCartPageOpened(){
+        cy.url().should('include', '/sepet');
+        cy.contains('Sepetim').should('be.visible');
+    }
+
     verifyCartIsEmpty(){
-        cy.get('.fw-light').should('contain.text', 'Sepetinizde Ürün Bulunmamaktadır');
+        cy.get(this.emptyCartMessage).should('contain.text', 'Sepetinizde Ürün Bulunmamaktadır');
     }
 
     verifyProductDetails(){
-    cy.get('.cart-item-title').should('be.visible');
-    cy.get('.fw-medium').should('be.visible');
-    cy.get('.col-md > .fw-bold').should('be.visible');
-    cy.get('.image-inner > .border-round').should('be.visible');
+    cy.get(this.cartItemTitle).should('be.visible');
+    cy.get(this.cartItemPrice).should('be.visible');
+    cy.get(this.cartItemTotalPrice).should('be.visible');
+    cy.get(this.cartItemImage).should('be.visible');
     }
 
     removeProductFromCart(){
-    cy.get('#delete-product-5489650 > .ti-trash-o').should('be.visible').click();
-    cy.get('.t-popconfirm-buttons > .btn-light').should('be.visible').click();
+    cy.get(this.removeItemButton).should('be.visible').click();
+    cy.get(this.confirmRemoveButton).should('be.visible').click();
     }
 
     verifyCartIsEmptyAfterRemove(){
-        cy.get('.fw-light').should('be.visible')
+        cy.get(this.emptyCartMessage).should('be.visible')
     }
 
     increaseCartItemQuantity(){
-        cy.get('#qty-plus5489650').should('be.visible').click({ scrollBehavior: false });
+        cy.get(this.increaseQuantityButton).should('be.visible').click({ scrollBehavior: false });
         cy.wait(5000)
     }
 
     decreaseCartItemQuantity(){
-        cy.get('#qty-minus5489650').click({ scrollBehavior: false });
+        cy.get(this.decreaseQuantityButton).click({ scrollBehavior: false });
     }
 
     enterInvalidCartItemQuantity(){
-        cy.get('#qty5489650').should('be.visible').clear().type('2440{enter}', { scrollBehavior: false, delay: 100});
+        cy.get(this.quantityInput).should('be.visible').clear().type('2440{enter}', { scrollBehavior: false, delay: 100});
     }
 
     clickOutsideCartArea(){
-        cy.get('.cart-page-buttons').click();
+        cy.get(this.cartPageButtonArea).click();
     }
 
     enterZeroCartItemQuantity(){
-        cy.get('#qty5489650').should('be.visible').clear().type('0{enter}', { scrollBehavior: false, delay: 100});
+        cy.get(this.quantityInput).should('be.visible').clear().type('0{enter}', { scrollBehavior: false, delay: 100});
     }
 
     verifyCartTotalsDisplayed(){
-        cy.get('#cart-price-container > .p-2').should('be.visible');
+        cy.get(this.cartTotalsContainer).should('be.visible');
     }
 
     enterValidCartItemQuantity(){
-        cy.get('#qty5489650').should('be.visible').clear().type('5{enter}', { scrollBehavior: false, delay: 100});
+        cy.get(this.quantityInput).should('be.visible').clear().type('5{enter}', { scrollBehavior: false, delay: 100});
 
     }
 
     clickBuyNowFromCart(){
-        cy.get('#cart-buy-btn > .fw-bold').should('be.visible').click();
+        cy.get(this.buyNowButton).should('be.visible').click();
     }
 
     continueAsGuest(){
-        cy.get('#membership-form-131 > .w-100').should('be.visible').click();
+        cy.get(this.continueAsGuestButton).should('be.visible').click();
     }
 
     fillShippingAddress(){
-        cy.get('[name="is_company_active"]').should('be.visible')
-        cy.get('[name="email"]').click().scrollIntoView().type('bnhke@gmail.com');
-        cy.get('[name="fullname"]').click().scrollIntoView().type('bnhke abcd');
-        cy.get('[name="country_code"]').select('Türkiye');
-        cy.get('[name="city_code"]').should('be.visible').select('Ankara');
-        cy.get('[name="town_code"]').should('be.visible').select('Etimesgut');
-        cy.get('[name="district_code"]').should('be.visible').select('ALTAY MAH');
-        cy.get('[name="address"]').click().scrollIntoView().type('abc mah. def cad. klm sokak 1/14');
-        cy.get('#order-address-form').click();
-        cy.get('[name="mobile_phone"]').click().scrollIntoView().type('01234567898');
-        cy.get('.col-12 > .btn').click();
+        cy.get(this.companyCheckbox).should('be.visible')
+        cy.get(this.emailInput).click().scrollIntoView().type('bnhke@gmail.com');
+        cy.get(this.fullNameInput).click().scrollIntoView().type('bnhke abcd');
+        cy.get(this.countrySelect).select('Türkiye');
+        cy.get(this.citySelect).should('be.visible').select('Ankara');
+        cy.get(this.townSelect).should('be.visible').select('Etimesgut');
+        cy.get(this.districtSelect).should('be.visible').select('ALTAY MAH');
+        cy.get(this.addressTextarea).click().scrollIntoView().type('abc mah. def cad. klm sokak 1/14');
+        cy.get(this.shippingForm).click();
+        cy.get(this.phoneInput).click().scrollIntoView().type('01234567898');
+        cy.get(this.saveAddressButton).click();
 
     }
 
     openCartPageFromMiniCart(){
-        cy.get('#cart-popup-go-cart').should('be.visible').click();
+        cy.get(this.miniCartGoToCartButton).should('be.visible').click();
     }
 
     saveShippingAddress(){
-        cy.get('.col-12 > .btn > span').scrollIntoView().should('be.visible').click();
+        cy.get(this.saveAddressButton).scrollIntoView().should('be.visible').click();
+    }
+
+    verifyUserOnCartPage() {
+        cy.location('pathname').should('eq', '/sepet')
+    }
+
+    verifyOrderLoginPage(){
+        cy.location('pathname').should('include', 'siparis-uye-giris');
+    }
+
+    verifyOrderAddressPage(){
+        cy.location('pathname').should('include', 'order/address');
+    }
+
+    verifyOrderPaymentPage(){
+        cy.location('pathname').should('include', 'order/payment');
     }
 }
 

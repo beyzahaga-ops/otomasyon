@@ -11,8 +11,12 @@ describe('Giris Yapilmamissa Odeme Adimina Geciste Yonlendirme', () => {
         HomePage.clickAddToCartButton();
 
         CartPage.openCartPageFromMiniCart();
+        CartPage.verifyUserOnCartPage();
         CartPage.clickBuyNowFromCart();
+        CartPage.verifyOrderLoginPage();
         CartPage.continueAsGuest();
+        CartPage.verifyOrderAddressPage();
         CartPage.fillShippingAddress();
+        CartPage.verifyOrderPaymentPage();
     });
 });

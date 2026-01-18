@@ -13,6 +13,7 @@ describe('Bos Sepet Durumu', () => {
     it('T02_Bos Sepet Durumu', () => {
         CartPage.openCartPageFromHeader();
         CartPage.verifyCartIsEmpty();
+        CartPage.verifyUserOnCartPage();
 
     });
 });
